@@ -3,12 +3,14 @@ import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
 import { CartPage } from '../pages/CartPage';
 
+const testdata = JSON.parse(JSON.stringify(require("../testdata.json")))
+
 test('Adding product into cart', async({page})=>{
    // Login
    const login = new LoginPage(page);
 
    await login.gotoLoginPage();
-   await login.login('pavanol', 'test@123');
+   await login.login(testdata.username, 'test@123');
 
    const homepage = new HomePage(page);
 
@@ -23,3 +25,4 @@ test('Adding product into cart', async({page})=>{
 
 
 })
+
